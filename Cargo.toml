@@ -1,0 +1,33 @@
+[package]
+name = "dnstap"
+version = "0.1.0"
+edition = "2021"
+description = "Zero-daemon DNS wire protocol tap and chaos proxy (UDP & TCP) with real-time inspection, fault injection, and NDJSON streaming"
+license = "MIT"
+authors = ["Animesh Raj <animesh080808@gmail.com>"]
+repository = "https://github.com/itsarraj/dnstap"
+readme = "README.md"
+keywords = ["dns", "chaos-engineering", "networking", "proxy", "telemetry"]
+categories = ["command-line-utilities", "network-programming", "development-tools"]
+
+[lib]
+name = "dnstap"
+path = "src/lib.rs"
+
+[[bin]]
+name = "dnstap"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+anyhow = "1"
+thiserror = "1"
+tokio = { version = "1", features = ["full"] }
+colored = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+regex = "1"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full", "test-util"] }
